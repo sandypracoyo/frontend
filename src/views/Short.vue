@@ -5,7 +5,7 @@
        <div class="col-md-8">
             <form v-on:submit.prevent="addLink" class="my-4 form-inline">
                 <label for="fullUrl" class="sr-only">Full Url</label>
-                <input required placeholder="Masukkan Url" type="url" class="form-control col mr-2" name="link" id="link">
+                <input v-model="link" required placeholder="Masukkan Url" type="text" class="form-control col mr-2" id="link">
             <button type="submit" class="btn btn-primary">Pendekkan Url</button>
             </form>
             <h4>{{url}}</h4>
@@ -21,7 +21,8 @@ export default {
   data () {
     return {
       title: '',
-      url: ''
+      url: '',
+      link: ''
     }
   },
   methods: {
