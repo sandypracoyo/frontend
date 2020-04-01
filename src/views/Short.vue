@@ -8,7 +8,7 @@
                 <input required placeholder="Masukkan Url" type="url" class="form-control col mr-2" name="link" id="link">
             <button type="submit" class="btn btn-primary">Pendekkan Url</button>
             </form>
-            <h4>Short Link : http://localhost:3000/sds123</h4>
+            <h4>{{url}}</h4>
        </div>
     </div>
   </div>
@@ -16,7 +16,6 @@
 
 <script>
 import axios from 'axios'
-const url = 'http://localhost:5000'
 export default {
   name: 'Short',
   data () {
@@ -28,9 +27,14 @@ export default {
   methods: {
     async addLink () {
       try {
-          const add = await axios.post()
+        const response = await axios.post('http://localhost:5000/short_url', {
+          title: this.link,
+          url: this.link
+        })
+        const hasil = response.data.data.short_url
+        this.url = `http://localhost:5000/short_url/${hasil}`
       } catch (error) {
-          
+        console.log(error)
       }
     }
   }
